@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { VendorsPage } from './vendors.page';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
+import { VendorComponent } from './vendor/vendor.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -16,13 +17,18 @@ import { VendorProductsComponent } from './vendor-products/vendor-products.compo
         path: '', component: VendorsPage,
       },
       {
+        path: ':vendorId', component: VendorComponent,
+      },
+      {
         path: ':vendorId/:vendorName', component: VendorProductsComponent,
-      }])
+      }
+    ])
   ],
   declarations: [
     VendorsPage,
     VendorListComponent,
-    VendorProductsComponent
+    VendorProductsComponent,
+    VendorComponent
   ]
 })
 export class VendorsPageModule { }

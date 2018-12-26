@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>Vendor</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="vendor && vendor.Name" class="vendor-details">
+    <ion-row>
+      <ion-col size="6">
+        <b>Name:</b>
+      </ion-col>
+      <ion-col size="6">
+        {{vendor.Name}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <b>Company Description:</b>
+      </ion-col>
+      <ion-col size="6">
+        {{vendor.CompanyDescription}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <b>Email:</b>
+      </ion-col>
+      <ion-col size="6">
+        {{vendor.Email}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <b>Address:</b>
+      </ion-col>
+      <ion-col size="6">
+        {{vendor.Addr1}}, {{vendor.Addr2}}, {{vendor.City}}, {{vendor.StateCode}}, {{vendor.CountryCode}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <b>Phone:</b>
+      </ion-col>
+      <ion-col size="6">
+        {{vendor.PhoneNo}}
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

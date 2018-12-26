@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Vendor } from './vendor.interface';
 @Injectable({
     providedIn: 'root'
 })
@@ -45,5 +46,13 @@ export class VendorsService {
             });
         }
         return categorisedVendorProducts;
+    }
+
+    async getVendorDetail(vendorId: String): Promise<Vendor> {
+        try {
+            return await this.http.get(`${environment['apiBase']}/Vendors/${vendorId}`).toPromise() as Vendor;
+        } catch (e) {
+            throw (e);
+        }
     }
 }
