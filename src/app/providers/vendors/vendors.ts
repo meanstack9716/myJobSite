@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Vendor } from './vendor.interface';
+import { Product } from './product.interface';
 @Injectable({
     providedIn: 'root'
 })
@@ -51,6 +52,14 @@ export class VendorsService {
     async getVendorDetail(vendorId: String): Promise<Vendor> {
         try {
             return await this.http.get(`${environment['apiBase']}/Vendors/${vendorId}`).toPromise() as Vendor;
+        } catch (e) {
+            throw (e);
+        }
+    }
+
+    async getProductDetail(productId: String): Promise<Product> {
+        try {
+            return await this.http.get(`${environment['apiBase']}/Products/${productId}`).toPromise() as Product;
         } catch (e) {
             throw (e);
         }

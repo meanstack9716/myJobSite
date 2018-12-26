@@ -7,6 +7,7 @@ import { VendorsPage } from './vendors.page';
 import { VendorListComponent } from './vendor-list/vendor-list.component';
 import { VendorProductsComponent } from './vendor-products/vendor-products.component';
 import { VendorComponent } from './vendor/vendor.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -15,6 +16,9 @@ import { VendorComponent } from './vendor/vendor.component';
     RouterModule.forChild([
       {
         path: '', component: VendorsPage,
+      },
+      {
+        path: 'product/:productId', component: ProductDetailComponent,
       },
       {
         path: ':vendorId', component: VendorComponent,
@@ -28,7 +32,8 @@ import { VendorComponent } from './vendor/vendor.component';
     VendorsPage,
     VendorListComponent,
     VendorProductsComponent,
-    VendorComponent
+    VendorComponent,
+    ProductDetailComponent
   ]
 })
 export class VendorsPageModule { }
