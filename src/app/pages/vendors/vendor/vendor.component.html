@@ -12,25 +12,33 @@
 </ion-header>
 
 <ion-content>
-  <div class="vendors" padding>
-    <h4><b>Choose Vendor</b></h4>
+  <div class="vendors">
+    <ion-row>
+      <ion-col size="8">
+        <p><b>{{vendorName}}</b></p>
+      </ion-col>
+      <ion-col size="4" class="view-info">
+        <ion-button>View Info</ion-button>
+      </ion-col>
+    </ion-row>
     <div class="vendor-list">
-      <ion-button *ngFor="let vendor of vendors; let i = index" (click)="goToVendorCategory(i)" [ngClass]="activeSliderIndex == i ? 'active' : ''">
+      <ion-button *ngFor="let vendor of vendorProducts; let i = index" (click)="goToVendorCategory(i)" [ngClass]="activeSliderIndex == i ? 'active' : ''">
         {{vendor.categoryName}}
       </ion-button>
     </div>
   </div>
-  <ion-slides pager="false" (ionSlideDidChange)="vanderSlideChanges()" #vendorSlider [options]="slideOpts">
-    <ion-slide *ngFor="let vendor of vendors">
+  <ion-slides pager="false" (ionSlideDidChange)="vanderSlideChanges()" #vendorProductSlider [options]="slideOpts">
+    <ion-slide *ngFor="let vendorProduct of vendorProducts">
       <ion-list>
-        <ion-item *ngFor="let data of vendor['data']" routerLink="/tabs/vendors/{{data.Id}}" routerLinkActive="router-link-active">
-          <ion-avatar slot="start">
-            <img [src]="data.LogoPath">
-          </ion-avatar>
+        <ion-item *ngFor="let product of vendorProduct['data']">
+          <ion-thumbnail slot="start">
+            <img [src]="product.ImagePath">
+            <ion-icon name="add-circle" *ngIf="product.CanBePurchased == 'Y'"></ion-icon>
+          </ion-thumbnail>
           <ion-label>
-            <p>{{data.Name}}</p>
-            <p>{{data.Email}}</p>
-            <p>{{data.Addr1}}, {{data.Addr2}}, {{data.City}}, {{data.StateCode}}, {{data.CountryCode}}-{{data.ZipCode}}</p>
+            <p>{{product.Name}}</p>
+            <p>{{product.Description}}</p>
+            <a>View Details</a>
           </ion-label>
         </ion-item>
       </ion-list>

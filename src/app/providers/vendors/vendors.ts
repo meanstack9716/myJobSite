@@ -28,11 +28,22 @@ export class VendorsService {
         return categorisedVendors;
     }
 
-    async getVendorProducts(vendorId) {
+    async getVendorProducts(vendorId): Promise<any> {
         try {
             return await this.http.get(`${environment['apiBase']}/Products?vendorid=${vendorId}`).toPromise();
         } catch (e) {
             throw (e);
         }
+    }
+
+    formatVendorProducts(vendorProducts) {
+        const categorisedVendorProducts = [];
+        for (const key of Object.keys(vendorProducts)) {
+            categorisedVendorProducts.push({
+                categoryName: key,
+                data: vendorProducts[key]
+            });
+        }
+        return categorisedVendorProducts;
     }
 }

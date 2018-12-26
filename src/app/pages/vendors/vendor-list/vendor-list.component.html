@@ -9,10 +9,10 @@
 <ion-slides pager="false" (ionSlideDidChange)="vanderSlideChanges()" #vendorSlider [options]="slideOpts">
   <ion-slide *ngFor="let vendor of vendors">
     <ion-list>
-      <ion-item *ngFor="let data of vendor['data']" routerLink="/tabs/vendors/{{data.Id}}" routerLinkActive="router-link-active" >
-        <ion-avatar slot="start">
+      <ion-item *ngFor="let data of vendor['data']" routerLink="/tabs/vendors/{{data.Id}}/{{data.Name}}" routerLinkActive="router-link-active" >
+        <ion-thumbnail slot="start">
           <img [src]="data.LogoPath">
-        </ion-avatar>
+        </ion-thumbnail>
         <ion-label>
           <p>{{data.Name}}</p>
           <p>{{data.Email}}</p>

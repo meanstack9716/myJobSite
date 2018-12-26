@@ -16,7 +16,7 @@ import { VendorComponent } from './vendor/vendor.component';
         path: '', component: VendorsPage,
       },
       {
-        path: ':vendorId', component: VendorComponent,
+        path: ':vendorId/:vendorName', component: VendorComponent,
       }])
   ],
   declarations: [
