@@ -27,4 +27,12 @@ export class VendorsService {
         }
         return categorisedVendors;
     }
+
+    async getVendorProducts(vendorId) {
+        try {
+            return await this.http.get(`${environment['apiBase']}/Products?vendorid=${vendorId}`).toPromise();
+        } catch (e) {
+            throw (e);
+        }
+    }
 }

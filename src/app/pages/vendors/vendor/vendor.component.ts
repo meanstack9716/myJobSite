@@ -12,7 +12,7 @@ export class VendorComponent implements OnInit {
     private _vendorsService: VendorsService,
     private route: ActivatedRoute
   ) {
-    this.vendorId = this.route.snapshot.queryParamMap.get('vendorId');
+    this.vendorId = this.route.snapshot.paramMap.get('vendorId');
     console.log(this.vendorId)
   }
 
@@ -21,7 +21,7 @@ export class VendorComponent implements OnInit {
   }
 
   async getVendorProduct() {
-
+    this._vendorsService.getVendorProducts(this.vendorId);
   }
 
 }
