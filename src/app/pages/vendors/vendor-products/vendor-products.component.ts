@@ -4,10 +4,10 @@ import { VendorsService } from '../../../providers/vendors/vendors';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-vendor',
-  templateUrl: './vendor.component.html',
-  styleUrls: ['./vendor.component.scss']
+  templateUrl: './vendor-products.component.html',
+  styleUrls: ['./vendor-products.component.scss']
 })
-export class VendorComponent implements OnInit {
+export class VendorProductsComponent implements OnInit {
   vendorId: String;
   vendorName: String;
   vendorProducts = [];
