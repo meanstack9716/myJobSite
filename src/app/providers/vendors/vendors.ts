@@ -3,17 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Vendor } from './vendor.interface';
 import { Product } from './product.interface';
+import { AuthService } from '../auth/auth';
 @Injectable({
     providedIn: 'root'
 })
 export class VendorsService {
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private _authService: AuthService
     ) { }
 
     async getVendors() {
         try {
-            return await this.http.get(`${environment['apiBase']}/Vendors?action=group_by_category`).toPromise();
+            const user = await this._authService.getUser();
+            return await this.http.get(`${environment['apiBase']}/Vendors?action=group_by_canorder&userid=${user.UID}`).toPromise();
         } catch (e) {
             throw (e);
         }

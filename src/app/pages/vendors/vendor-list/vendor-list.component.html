@@ -9,7 +9,7 @@
 <ion-slides pager="false" (ionSlideDidChange)="vanderSlideChanges()" #vendorSlider [options]="slideOpts">
   <ion-slide *ngFor="let vendor of vendors">
     <ion-list>
-      <ion-item *ngFor="let data of vendor['data']" routerLink="/tabs/vendors/{{data.Id}}/{{data.Name}}" routerLinkActive="router-link-active" >
+      <ion-item *ngFor="let data of vendor['data']" routerLink="/tabs/vendors/{{data.Id}}/{{data.Name}}">
         <ion-thumbnail slot="start">
           <img [src]="data.LogoPath">
         </ion-thumbnail>
@@ -17,6 +17,7 @@
           <p>{{data.Name}}</p>
           <p>{{data.Email}}</p>
           <p>{{data.Addr1}}, {{data.Addr2}}, {{data.City}}, {{data.StateCode}}, {{data.CountryCode}}-{{data.ZipCode}}</p>
+          <ion-icon name="infinite" *ngIf="data.CanOrder == 'Y'"></ion-icon>
         </ion-label>
       </ion-item>
     </ion-list>

@@ -3,6 +3,7 @@
         display: flex;
         overflow: auto;
         padding-bottom: 1em;
+
         .button {
             margin: 0 8px;
             --border-radius: 48px;
@@ -12,12 +13,22 @@
             --color-activated: #000;
             --color-focused: #000;
         }
+
         .button.active {
             --background: var(--ion-color-primary, #3880ff);
             --background-focused: var(--ion-color-primary-shade, #3171e0);
             --color: var(--ion-color-primary-contrast, #fff);
             --color-activated: var(--ion-color-primary-contrast, #fff);
             --color-focused: var(--ion-color-primary-contrast, #fff);
+        }
+    }
+}
+
+.swiper-slide {
+    ion-label {
+        width: 70vw;
+        ion-icon {
+            float: right;
         }
     }
 }

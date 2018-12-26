@@ -1,9 +1,9 @@
 <ion-content>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-searchbar [(ngModel)]="searchText" (ionClear)="searchText = ''" (ionCancel)="searchText = ''" placeholder="Try 'scissor lift'"></ion-searchbar>
   </ion-toolbar>
   <div class="user-container">
-    <h2>Hello, Richard!</h2>
+    <h2>Hello, <b *ngIf="user">{{user.FullName}}!</b></h2>
   </div>
   <app-vendor-list [searchText]="searchText"></app-vendor-list>
 </ion-content>

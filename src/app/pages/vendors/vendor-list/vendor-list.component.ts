@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { VendorsService } from '../../../providers/vendors/vendors';
-
+import { LoaderService } from '../../../providers/loader/loader';
 @Component({
   selector: 'app-vendor-list',
   templateUrl: './vendor-list.component.html',
@@ -17,8 +17,10 @@ export class VendorListComponent implements OnInit, OnChanges {
   activeSliderIndex = 0;
   @ViewChild('vendorSlider') slides: IonSlides;
   constructor(
-    private _vendorsService: VendorsService
-  ) { }
+    private _vendorsService: VendorsService,
+    private _loaderService: LoaderService
+  ) {
+  }
 
   ngOnInit() {
     this.getVendors();
@@ -38,9 +40,11 @@ export class VendorListComponent implements OnInit, OnChanges {
   }
 
   async getVendors() {
+    this._loaderService.apiLoader();
     const res = await this._vendorsService.getVendors();
     this.vendors = this._vendorsService.formatVendors(res);
     this.vendorsBackUpData = Object.assign([], this.vendors);
+    this._loaderService.dismissLoader();
   }
 
   goToVendorCategory(to) {
