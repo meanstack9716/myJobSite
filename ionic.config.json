@@ -1,6 +1,8 @@
 {
   "name": "vendorApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "d39b8ca6"
 }
